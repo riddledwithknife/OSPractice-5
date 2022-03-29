@@ -7,7 +7,7 @@ from pynput import keyboard
 
 MIN_LEN = 3
 MAX_LEN = 26
-QUANTUM = 450000  # nanosecond
+QUANTUM = 450000
 TICK = QUANTUM * 15
 WORDS = ("BEtt", "glAD", "BrUT")
 
@@ -28,7 +28,6 @@ class BruteThread(Thread):
         for repeat in range(MIN_LEN, MAX_LEN):
             for i in itertools.product(ascii_letters, repeat=repeat):
                 self.__count += 1
-                # print(''.join(i))
                 self.__pause_event.wait()
                 if ''.join(i) == self.word:
                     return True
